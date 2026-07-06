@@ -246,6 +246,41 @@ var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matche
   tick();
 })();
 
+// ---------- Contact: click-to-copy email ----------
+(function () {
+  var btn = document.getElementById('emailCopyBtn');
+  var hint = document.getElementById('copyHint');
+  var emailValue = document.getElementById('emailValue');
+  if (!btn) return;
+
+  var email = emailValue.textContent.trim();
+
+  btn.addEventListener('click', function () {
+    var done = function () {
+      var original = hint.textContent;
+      hint.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        hint.textContent = original;
+        btn.classList.remove('copied');
+      }, 1500);
+    };
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(done).catch(done);
+    } else {
+      // fallback for browsers without Clipboard API support
+      var temp = document.createElement('textarea');
+      temp.value = email;
+      document.body.appendChild(temp);
+      temp.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(temp);
+      done();
+    }
+  });
+})();
+
 // ---------- Scroll reveal ----------
 (function () {
   var items = document.querySelectorAll('.reveal');
