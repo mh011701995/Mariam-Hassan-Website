@@ -401,6 +401,13 @@ input[type="range"] {
   flex: 1;
 }
 
+.contact-value-solo {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  flex: 1;
+}
+
 .contact-hint {
   font-family: var(--font-mono);
   font-size: 0.72rem;
