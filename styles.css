@@ -427,8 +427,8 @@ input[type="range"] {
 }
 
 .contact-arrow {
-  font-size: 0.95rem;
   color: var(--text-muted);
+  flex-shrink: 0;
   transition: color 0.15s ease, transform 0.15s ease;
 }
 
