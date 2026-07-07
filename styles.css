@@ -67,12 +67,6 @@ a {
   color: var(--text-primary);
 }
 
-.ml {
-  display: inline-block;
-  transition: transform 0.15s ease, color 0.15s ease;
-  will-change: transform;
-}
-
 .nav-links {
   display: flex;
   gap: 28px;
@@ -148,6 +142,13 @@ a {
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+.wave-caption {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin: 10px 0 0;
 }
 
 main {

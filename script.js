@@ -392,45 +392,6 @@ var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matche
   draw();
 })();
 
-// ---------- Magnetic nav name letters + periodic wave ----------
-(function () {
-  var nav = document.getElementById('navName');
-  if (!nav) return;
-  var letters = nav.querySelectorAll('.ml');
-  var reducedMotionNav = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  document.addEventListener('mousemove', function (e) {
-    letters.forEach(function (letter) {
-      var rect = letter.getBoundingClientRect();
-      var cx = rect.left + rect.width / 2;
-      var cy = rect.top + rect.height / 2;
-      var dist = Math.hypot(e.clientX - cx, e.clientY - cy);
-      var maxDist = 60;
-      var strength = Math.max(0, 1 - dist / maxDist);
-      var scale = 1 + strength * 0.3;
-      var lift = -strength * 4;
-      letter.style.transform = 'translateY(' + lift + 'px) scale(' + scale + ')';
-    });
-  });
-
-  function triggerWave() {
-    letters.forEach(function (letter, i) {
-      setTimeout(function () {
-        letter.style.transform = 'translateY(-7px) scale(1.15)';
-        setTimeout(function () {
-          letter.style.transform = '';
-        }, 200);
-      }, i * 55);
-    });
-  }
-
-  if (!reducedMotionNav) {
-    // wave once shortly after load, then repeat periodically
-    setTimeout(triggerWave, 600);
-    setInterval(triggerWave, 9000);
-  }
-})();
-
 // ---------- Scroll-spy nav highlighting ----------
 (function () {
   var navLinks = document.querySelectorAll('.nav-links a');
