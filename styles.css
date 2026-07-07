@@ -58,6 +58,19 @@ a {
   border-bottom: 1px solid var(--border);
 }
 
+.nav-name-wrap {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 6px 18px;
+  transition: border-color 0.2s ease;
+}
+
+.nav-name-wrap:hover {
+  border-color: #45464A;
+}
+
 .nav-name {
   font-family: var(--font-display);
   font-weight: 700;
